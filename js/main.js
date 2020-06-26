@@ -42,15 +42,15 @@ tBody.innerHTML = '';
         let tr = createAnyElement("tr");
         for (let k of keys) {
             let td = createAnyElement("td");
+            let input = createAnyElement("input", {
+                class: "form-control",
+                value: row[k],
+                name: k
+            });
             if (k == "id") {
-                td.innerHTML = row[k];
-            } else {
-                let input = createAnyElement("input", {
-                    class: "form-control",
-                    value: row[k]
-                });
-                td.appendChild(input);
+                input.setAttribute("readonly", true);
             }
+            td.appendChild(input);
             tr.appendChild(td);
         }
         let btnGroup = createBtnGroup();
@@ -69,7 +69,7 @@ function createAnyElement (name, attributes) {
 
 function createBtnGroup () {
     let group =createAnyElement ("div", {class: "btn btn-group"});
-    let infoBtn =createAnyElement("button", {class: "btn btn-info", onclick: "getInfo(this)"});
+    let infoBtn =createAnyElement("button", {class: "btn btn-info", onclick: "setRow(this)"});
     infoBtn.innerHTML ='<i class="fa fa-refresh" aria-hidden="true"></i>'
     let delBtn =createAnyElement("button", {class: "btn btn-danger", onclick: "delRow(this)"});
     delBtn.innerHTML ='<i class="fa fa-trash" aria-hidden="true"></i>'
@@ -158,4 +158,13 @@ function getRowData(tr) {
         data[inputs[i].name] = inputs[i].value;
     }
     return data;
+}
+
+//Set data
+
+function setRow(btn) {
+    let tr = btn.parentElement.parentElement.parentElement;
+    let data = getRowData(tr);
+
+    console.log(data);
 }
