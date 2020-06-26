@@ -11,9 +11,14 @@
       "email": "littlejimmy@gmail.com"
     },
     {
-      "name": "nacsa",
-      "email": "nacsa@gmail.com",
-      "id": 3
+      "id": 3,
+      "name": "Sándor",
+      "email": "sanyi@gmail.com"
+    },
+    {
+      "name": "Kiss Pista",
+      "email": "kispityu@gmail.com",
+      "id": 4
     }
   ],
   "comments": [
